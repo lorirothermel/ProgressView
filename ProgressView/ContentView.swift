@@ -8,16 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showProgressView = false
+    
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
+            Spacer()
+            
+            if showProgressView {
+                ProgressView()
+                    .tint(.red)
+                    .scaleEffect(4)
+            }  // if
+            
+            Text("showProgressView: \(showProgressView ? "True" : "False")")
+                .padding(.top, 35)
+            Spacer()
+            
+            Button("Toggle Progress View") {
+                showProgressView.toggle()
+            }  // Button
+            .buttonStyle(.borderedProminent)
+            
+        }  // VStack
         .padding()
-    }
-}
+        
+        
+    }  // some View
+    
+}  // ContentView
 
 #Preview {
     ContentView()
